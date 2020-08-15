@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start index.js"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/varunon9/aws-ecs-getting-started#readme",
   "dependencies": {
-    "express": "4.17.1",
-    "pm2": "4.4.0"
+    "express": "4.17.1"
   }
 }

@@ -1,11 +1,7 @@
 const express = require('express');
-const http = require('http');
 
-const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
 const app = express();
-
-const server = http.createServer(app);
 
 app.get('/', (req, res) => {
   res.json({
@@ -21,6 +17,6 @@ app.get('/ping', (req, res) => {
   });
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`Server is running at port ${port}`);
 });
