@@ -16,13 +16,17 @@
         {
           "name":"NODE_ENV",
           "value":"production"
+        },
+        {
+          "name":"PORT",
+          "value":"3000"
         }
       ],
       "essential":true,
       "logConfiguration":{
         "logDriver":"awslogs",
         "options":{
-          "awslogs-group":"awslogs-getting-started",
+          "awslogs-group":"/ecs/aws-ecs-getting-started",
           "awslogs-region":"<region>",
           "awslogs-stream-prefix":"awslogs-aws-ecs-getting-started-node"
         }
