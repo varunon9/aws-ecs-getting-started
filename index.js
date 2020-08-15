@@ -1,12 +1,24 @@
+const express = require('express');
 const http = require('http');
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = process.env.PORT || 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+const server = http.createServer(app);
+
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'ECE AWS Getting Started Successful'
+  });
+});
+
+app.get('/ping', (req, res) => {
+  res.json({
+    success: true,
+    message: 'pong'
+  });
 });
 
 server.listen(port, hostname, () => {

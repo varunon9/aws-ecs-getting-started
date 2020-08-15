@@ -28,11 +28,7 @@
         }
       },
       "entryPoint":[],
-      "command":[
-        "npm",
-        "run",
-        "start"
-      ]
+      "command":[]
     }
   ],
   "requiresCompatibilities":[
@@ -40,5 +36,5 @@
   ],
   "cpu":"256",
   "memory":"512",
-  "executionRoleArn": "ecsTaskExecutionRole"
+  "executionRoleArn": "arn:aws:iam::<aws_account_id>:role/ecsTaskExecutionRole"
 }

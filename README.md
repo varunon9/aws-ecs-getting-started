@@ -59,25 +59,44 @@ Do note that for above command to work, your IAM user must have write access to 
 
 ### Register a Task Definition
 
-1. Edit `fargate-task.json` file and replace all occurence of `<aws_account_id>` with your AWS account ID and `<region>` with your aws region
-2. `aws ecs register-task-definition --cli-input-json file:///home/varunkumar/Desktop/github/aws-ecs-getting-started/fargate-task.json`
-3. Do note that in above command , I have specified full path of fargate-task.json file
-4. Once task definition registration is complete, you can use `aws ecs list-task-definitions` to verify
+1. Visit [Cloudwatch console](https://ap-south-1.console.aws.amazon.com/cloudwatch/home) and create a log group `awslogs-getting-started`.
+2. Edit `fargate-task.json` file and replace all occurence of `<aws_account_id>` with your AWS account ID and `<region>` with your aws region
+3. `aws ecs register-task-definition --cli-input-json file:///home/varunkumar/Desktop/github/aws-ecs-getting-started/fargate-task.json`
+4. Do note that in above command , I have specified full path of fargate-task.json file
+5. Once task definition registration is complete, you can use `aws ecs list-task-definitions` to verify
 
 ![list-task-definitions](./screenshots/list-task-definitions.png)
 
 ### Creating Service
 
-1. ```
+```
 aws ecs create-service \
 --cluster fargate-cluster \
 --service-name fargate-service \
 --task-definition fargate-getting-started:1 \
 --desired-count 1 \
 --launch-type "FARGATE" \
---network-configuration "awsvpcConfiguration={subnets=[subnet-abcd1234],securityGroups=[sg-abcd1234]}"
+--network-configuration "awsvpcConfiguration={subnets=[subnet-abcd1234],securityGroups=[sg-abcd1234],assignPublicIp=ENABLED}"
 ```
 2. In above command replace `subnet-abcd1234` with your Subnet ID and `sg-abcd1234` with your Security group ID. Visit [AWS VPC console](https://ap-south-1.console.aws.amazon.com/vpc/home) for details
 3. You can verify service creation using `aws ecs list-services --cluster fargate-cluster`
 
 ![list-services](./screenshots/list-services.png)
+
+### Describe the Runing Service
+
+1. To get more information `aws ecs describe-services --cluster fargate-cluster --services fargate-service`
+
+### Deploy after changing codebase
+
+1. Rebuild image `docker build -t aws-ecs-getting-started .`
+2. Tag it `docker tag aws-ecs-getting-started:latest <aws_account_id>.dkr.ecr.ap-south-1.amazonaws.com/aws-ecs-getting-started:1.1`
+3. Push image to ECR `sudo docker push <aws_account_id>.dkr.ecr.ap-south-1.amazonaws.com/aws-ecs-getting-started:1.1`
+4. Update task definition `aws ecs register-task-definition --cli-input-json file:///home/varunkumar/Desktop/github/aws-ecs-getting-started/fargate-task.json`
+5. List task definitions to get latest revision `aws ecs list-task-definitions`
+6. Update service to use new task definition `aws ecs update-service --service fargate-service --task-definition fargate-getting-started:3 --cluster fargate-cluster`
+
+## Cleaning UP
+
+1. Delete the service `aws ecs delete-service --cluster fargate-cluster --service fargate-service --force`
+2. Delete the cluster `aws ecs delete-cluster --cluster fargate-cluster`
