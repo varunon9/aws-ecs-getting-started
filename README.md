@@ -92,14 +92,14 @@ Do note that for above command to work, your IAM user must have write access to 
 
 ## VPC
 
-Make sure that you have created and configured one VPC. [Docs](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html)
+Make sure that you have created and configured one VPC, [Docs](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html).
 We would required id of two Subnets created here.
 
 ### Security Group
 
 We also need to create one security group (allowing port 80) in VPC created above. 
 
-!(security-group)[./screenshots/ads-security-group.png]
+![security-group](./screenshots/ads-security-group.png)
 
 ## ELB
 
