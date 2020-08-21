@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ECS Tutorial</title>
+  </head>
+  <body>
+    <p>List of users-</p>
+    <div id="users"></div>
+    <script>
+      const usersDiv = document.getElementById('users');
+      fetch('/api/users')
+        .then(response => response.json())
+        .then(data => {
+          usersDiv.innerText = JSON.stringify(data);
+        })
+        .catch(error => {
+          usersDiv.innerText = error.message;
+        });
+    </script>
+  </body>  
+</html>

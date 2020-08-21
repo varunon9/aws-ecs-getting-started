@@ -1,6 +1,17 @@
 # aws-ecs-getting-started
 Getting started with AWS ECS | Deployment in production
 
+### Objective
+
+To deploy my test app on AWS ECS. Test app has 3 microservices-
+
+1. Frontend - Users facing side running on port 4000 and mounted on / route
+2. Admin Panel- Internal tool running on port 5000 and mounted on /admin route
+3. Backend- Backend for Frontend as well as Admin Panel, running on port 3000 and mounted on /api path
+
+All the above 3 microservices will be deployed as docker container on ECS and connected via AWS Elastic Load Balancer(ELB).
+Note that your container should be stateless so you should not deploy your database as container.  
+
 ## Prerequisite
 
 1. [Install aws CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
@@ -44,7 +55,7 @@ Do note that for above command to work, your IAM user must have write access to 
 
 1. Tag the image `docker tag aws-ecs-getting-started:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/aws-ecs-getting-started:latest`
 2. Push the image `docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/aws-ecs-getting-started:latest`
-3. Check [docs](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) for full reference
+3. Check the [docs](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) for full reference
 
 ![Push docker image to ECR](./screenshots/docker-push-image.png)
 

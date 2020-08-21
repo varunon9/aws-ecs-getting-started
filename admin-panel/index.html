@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <p>List of admins-</p>
+    <div id="admins"></div>
+    <script>
+      const adminsDiv = document.getElementById('admins');
+      fetch('/api/admins')
+        .then(response => response.json())
+        .then(data => {
+          adminsDiv.innerText = JSON.stringify(data);
+        })
+        .catch(error => {
+          adminsDiv.innerText = error.message;
+        });
+    </script>
+  </body>  
+</html>

@@ -1,14 +1,14 @@
 {
-  "family":"fargate-getting-started",
+  "family":"fargate-getting-started-be",
   "networkMode":"awsvpc",
   "containerDefinitions":[
     {
-      "name":"aws-ecs-getting-started-node",
-      "image":"<aws_account_id>.dkr.ecr.<region>.amazonaws.com/aws-ecs-getting-started:latest",
+      "name":"ecs-getting-started-be",
+      "image":"<aws_account_id>.dkr.ecr.<region>.amazonaws.com/ecs-getting-started-admin-panel:latest",
       "portMappings":[
         {
-          "containerPort":3000,
-          "hostPort":3000,
+          "containerPort":5000,
+          "hostPort":5000,
           "protocol":"tcp"
         }
       ],
@@ -19,7 +19,7 @@
         },
         {
           "name":"PORT",
-          "value":"3000"
+          "value":"5000"
         }
       ],
       "essential":true,
@@ -28,7 +28,7 @@
         "options":{
           "awslogs-group":"/ecs/aws-ecs-getting-started",
           "awslogs-region":"<region>",
-          "awslogs-stream-prefix":"awslogs-aws-ecs-getting-started-node"
+          "awslogs-stream-prefix":"awslogs-admin-panel"
         }
       },
       "entryPoint":[],
@@ -39,6 +39,6 @@
     "FARGATE"
   ],
   "cpu":"256",
-  "memory":"512",
+  "memory":"256",
   "executionRoleArn": "arn:aws:iam::<aws_account_id>:role/ecsTaskExecutionRole"
 }

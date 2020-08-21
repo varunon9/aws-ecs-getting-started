@@ -1,0 +1,30 @@
+{
+  "name": "aws-ecs-getting-started",
+  "version": "1.0.0",
+  "description": "Getting started with AWS ECS | Deployment in production",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varunon9/aws-ecs-getting-started.git"
+  },
+  "keywords": [
+    "aws",
+    "ecs",
+    "docker",
+    "aws-ecr",
+    "fargate"
+  ],
+  "author": "Varun Kumar <varunon9@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/varunon9/aws-ecs-getting-started/issues"
+  },
+  "homepage": "https://github.com/varunon9/aws-ecs-getting-started#readme",
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
