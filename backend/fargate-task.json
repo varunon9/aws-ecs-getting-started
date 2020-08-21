@@ -1,5 +1,5 @@
 {
-  "family":"fargate-getting-started-be",
+  "family":"ecs-getting-started-be",
   "networkMode":"awsvpc",
   "containerDefinitions":[
     {
@@ -39,6 +39,6 @@
     "FARGATE"
   ],
   "cpu":"256",
-  "memory":"256",
+  "memory":"512",
   "executionRoleArn": "arn:aws:iam::<aws_account_id>:role/ecsTaskExecutionRole"
 }

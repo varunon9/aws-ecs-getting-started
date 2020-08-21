@@ -1,9 +1,9 @@
 {
-  "family":"fargate-getting-started-be",
+  "family":"ecs-getting-started-fe",
   "networkMode":"awsvpc",
   "containerDefinitions":[
     {
-      "name":"ecs-getting-started-be",
+      "name":"ecs-getting-started-fe",
       "image":"<aws_account_id>.dkr.ecr.<region>.amazonaws.com/ecs-getting-started-fe:latest",
       "portMappings":[
         {
@@ -39,6 +39,6 @@
     "FARGATE"
   ],
   "cpu":"256",
-  "memory":"256",
+  "memory":"512",
   "executionRoleArn": "arn:aws:iam::<aws_account_id>:role/ecsTaskExecutionRole"
 }

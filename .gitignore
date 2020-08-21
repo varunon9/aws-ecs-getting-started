@@ -105,3 +105,6 @@ dist
 
 # Production task definition file
 fargate-task-prod.json
+
+# Production service file
+fargate-service-prod.json

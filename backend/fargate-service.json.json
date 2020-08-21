@@ -1,0 +1,31 @@
+{
+  "cluster":"fargate-cluster",
+  "serviceName":"ecs-getting-started-be",
+  "taskDefinition":"ecs-getting-started-be:1",
+  "loadBalancers":[
+    {
+      "targetGroupArn":"arn:aws:elasticloadbalancing:<region>:<aws_account_id>:targetgroup/ads-targets-be/59d98ee5e1941f2a",
+      "containerName":"ecs-getting-started-be",
+      "containerPort":3000
+    }
+  ],
+  "launchType":"FARGATE",
+  "schedulingStrategy":"REPLICA",
+  "deploymentController":{
+    "type":"CODE_DEPLOY"
+  },
+  "platformVersion":"LATEST",
+  "networkConfiguration":{
+    "awsvpcConfiguration":{
+      "assignPublicIp":"ENABLED",
+      "securityGroups":[
+        "sg-02945fb0b869de7e1"
+      ],
+      "subnets":[
+        "subnet-01fe65244c86902ac",
+        "subnet-077246c7afe42b119"
+      ]
+    }
+  },
+  "desiredCount":1
+}
